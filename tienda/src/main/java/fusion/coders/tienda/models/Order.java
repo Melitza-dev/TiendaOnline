@@ -29,5 +29,6 @@ public class Order {
     @JoinColumn(name = "id_shipment")
     private Shipment shipment;
 
-
+    @ManyToMany(mappedBy = "order")
+    private List<Product> products;
 }

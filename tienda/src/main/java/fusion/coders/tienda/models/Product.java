@@ -24,7 +24,7 @@ public class Product {
     @Column(name = "stock", nullable = false)
     private int stock;
 
-    @Column(name = "price",precision = 10, scale = 2, nullable = false)
+    @Column(name = "price", precision = 10, scale = 2, nullable = false)
     private BigDecimal price;
 
     @Column(name = "others", columnDefinition = "TEXT")
@@ -33,4 +33,11 @@ public class Product {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_category", nullable = false)
     private Category category;
+
+    @ManyToMany
+    @JoinTable(name = "orders_products",
+      joinColumns = @JoinColumn(name = "id_product"),
+      inverseJoinColumns = @JoinColumn(name = "id_order")
+    )
+    private List<Order> order;
 }
