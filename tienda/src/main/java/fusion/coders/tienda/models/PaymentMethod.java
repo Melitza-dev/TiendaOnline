@@ -18,7 +18,7 @@ public class PaymentMethod {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "id_order", nullable = false)
     private List<Order> orderList;
 
 }

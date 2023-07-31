@@ -30,7 +30,7 @@ public class Product {
     @Column(name = "others", columnDefinition = "TEXT")
     private int other;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id", nullable = false)
-    private List<Category> categoryList;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_category", nullable = false)
+    private Category category;
 }

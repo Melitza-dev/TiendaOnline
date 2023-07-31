@@ -3,7 +3,6 @@ package fusion.coders.tienda.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
 
 @Entity
 @Table(name = "clients")
@@ -18,7 +17,7 @@ public class Client {
     private String name;
 
     @Column(name = "email", nullable = false)
-    private String description;
+    private String email;
 
     @Column(name = "address", columnDefinition = "TEXT")
     private String address;
@@ -26,7 +25,5 @@ public class Client {
     @Column(name = "contact_information", length = 50)
     private String ContactInformation;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
-    private List<Order> orderList;
+
 }

@@ -23,8 +23,8 @@ public class User {
     @Column(name = "password", length = 100, nullable = false)
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
-    private List<Country> countryList;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_country")
+    private Country countryList;
 
 }

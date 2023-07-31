@@ -3,6 +3,10 @@ package fusion.coders.tienda.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.security.auth.callback.LanguageCallback;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "promotions")
 @Data
@@ -16,13 +20,13 @@ public class Promotion {
     private String promotionCode;
 
     @Column(name = "porcentage_promotion", precision = 10, scale = 2, nullable = false)
-    private double porcentagePromotion;
+    private BigDecimal porcentagePromotion;
 
     @Column(name = "start_date", columnDefinition = "DATE", nullable = false)
-    private String startDate;
+    private LocalDateTime startDate;
 
     @Column(name = "date_end", columnDefinition = "DATE", nullable = false)
-    private String dateEnd;
+    private LocalDateTime dateEnd;
 
 
 

@@ -12,10 +12,13 @@ import java.util.List;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "date", columnDefinition = "DATE", nullable = false)
     private LocalDateTime date;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_client")
+    private Client client;
 
 }
