@@ -23,7 +23,5 @@ public class Shipment {
     @Column(name = "shipping_status", columnDefinition = "boolean", nullable = false)
     private boolean shippingStatus;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_order")
-    private List<Order> orderList;
+
 }

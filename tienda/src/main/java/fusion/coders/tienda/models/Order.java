@@ -21,4 +21,13 @@ public class Order {
     @JoinColumn(name = "id_client")
     private Client client;
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_paymentMethod", nullable = false)
+    private PaymentMethod paymentMethod;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_shipment")
+    private Shipment shipment;
+
+
 }
