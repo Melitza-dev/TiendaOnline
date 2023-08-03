@@ -1,0 +1,33 @@
+package fusion.coders.tienda.models;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "user")
+public class user {
+    @Id
+    public static void main(String[] args) {
+       
+        Configuration configuration = new Configuration().configure();
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        Session session = sessionFactory.openSession();
+
+      
+        Usuario nuevoUsuario = new Usuario("NombreUsuario", "correo@example.com", "contrasenaSegura");
+
+    
+        Transaction transaction = session.beginTransaction();
+
+        
+        session.save(nuevoUsuario);
+
+
+        transaction.commit();
+
+        
+        session.close();
+        sessionFactory.close();
+    }
+}
