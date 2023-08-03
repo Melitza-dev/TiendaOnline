@@ -3,18 +3,20 @@ package fusion.coders.tienda.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Data
+import java.util.List;
+
 @Entity
-@Table(name = "categoria")
-public class Categoria {
+@Table(name = "payment_methods")
+@Data
+public class PaymentMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nombre")
-    private String nombre;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @Column(name = "descripcion")
-    private String descripcion;
+
+
 }
