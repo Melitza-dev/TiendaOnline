@@ -30,9 +30,9 @@ public class Order {
     @JoinColumn(name = "id_payment_method", nullable = false)
     private PaymentMethod paymentMethod;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+   /* @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "shipping_type")
-    private ShippingType shippingType;
+    private ShippingType shippingType;*/
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "shipping", nullable = false)

@@ -49,18 +49,23 @@ public class OrderServiceImpl implements IOrderService {
         Client client = clientRepository.findById(order.getClient().getId());
         Shipment shipment = shipmentRepository.findById(order.getShipment().getId()).orElseThrow();
         PaymentMethod paymentMethod = paymentMethodRepository.findById(order.getPaymentMethod().getId()).orElseThrow();
-        ShippingType shippingType = shippingTypeRepository.findById(order.getShippingType().getId()).orElseThrow();
+       // ShippingType shippingType = shippingTypeRepository.findById(order.getShippingType().getId()).orElseThrow();
 
         List<Product> productList = new ArrayList<>();
         for (Product p : order.getProducts()) {
-            Product product = productRepository.findById(p.getId()).orElseThrow();
+            Product productBd = productRepository.findById(p.getId()).orElseThrow();
 
-            productList.add(product);
+            //Agrego a la Orden de Compra
+            productList.add(productBd);
+
+            //Modifico el stock
+            productBd.setStock(productBd.getStock() - 1);
+            productRepository.save(productBd);
         }
         order.setShipment(shipment);
         order.setClient(client);
         order.setPaymentMethod(paymentMethod);
-        order.setShippingType(shippingType);
+        //order.setShippingType(shippingType);
         order.setProducts(productList);
 
         return orderRepository.save(order);
@@ -76,7 +81,7 @@ public class OrderServiceImpl implements IOrderService {
             orderBD.setClient(order.getClient());
             orderBD.setProducts(order.getProducts());
             orderBD.setDate(order.getDate());
-            orderBD.setShippingType(order.getShippingType());
+           // orderBD.setShippingType(order.getShippingType());
             orderBD.setPaymentMethod(order.getPaymentMethod());
             return Optional.of(agregar(orderBD));
         }

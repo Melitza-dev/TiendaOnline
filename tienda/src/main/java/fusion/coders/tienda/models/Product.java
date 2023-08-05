@@ -1,5 +1,6 @@
 package fusion.coders.tienda.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -35,6 +36,8 @@ public class Product {
     @JoinColumn(name = "id_category", nullable = false)
     private Category category;
 
-    @ManyToMany(mappedBy = "products",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "products",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Order> order = new ArrayList<>();
+
 }
