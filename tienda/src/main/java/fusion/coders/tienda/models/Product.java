@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -28,16 +29,12 @@ public class Product {
     private BigDecimal price;
 
     @Column(name = "others", columnDefinition = "TEXT")
-    private int other;
+    private String other;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_category", nullable = false)
     private Category category;
 
-    @ManyToMany
-    @JoinTable(name = "orders_products",
-      joinColumns = @JoinColumn(name = "id_product"),
-      inverseJoinColumns = @JoinColumn(name = "id_order")
-    )
-    private List<Order> order;
+    @ManyToMany(mappedBy = "products",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Order> order = new ArrayList<>();
 }

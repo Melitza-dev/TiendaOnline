@@ -1,7 +1,8 @@
 package fusion.coders.tienda.repositories;
 
+import fusion.coders.tienda.models.Promotion;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class PromotionRepository {
+public interface PromotionRepository extends CrudRepository<Promotion, Long> {
 }

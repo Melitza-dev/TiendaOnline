@@ -1,6 +1,5 @@
 package fusion.coders.tienda.repositories;
 
-import fusion.coders.tienda.models.Category;
 import fusion.coders.tienda.models.Client;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

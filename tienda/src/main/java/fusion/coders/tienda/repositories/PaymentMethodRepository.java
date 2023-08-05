@@ -1,7 +1,8 @@
 package fusion.coders.tienda.repositories;
 
+import fusion.coders.tienda.models.PaymentMethod;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class PaymentMethodRepository {
+public interface PaymentMethodRepository extends CrudRepository<PaymentMethod, Long> {
 }

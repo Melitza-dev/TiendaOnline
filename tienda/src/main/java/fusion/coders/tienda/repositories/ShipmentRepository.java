@@ -1,7 +1,8 @@
 package fusion.coders.tienda.repositories;
 
-import org.springframework.stereotype.Repository;
+import fusion.coders.tienda.models.Shipment;
+import org.springframework.data.repository.CrudRepository;
 
-@Repository
-public class ShipmentRepository {
+
+public interface ShipmentRepository extends CrudRepository<Shipment, Long> {
 }

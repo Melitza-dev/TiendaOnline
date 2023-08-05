@@ -1,7 +1,8 @@
 package fusion.coders.tienda.repositories;
 
-import org.springframework.stereotype.Repository;
+import fusion.coders.tienda.models.Country;
+import org.springframework.data.repository.CrudRepository;
 
-@Repository
-public class CountryRepository {
+
+public interface CountryRepository extends CrudRepository<Country, Long> {
 }

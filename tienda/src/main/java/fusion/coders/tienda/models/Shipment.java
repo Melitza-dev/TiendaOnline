@@ -3,7 +3,7 @@ package fusion.coders.tienda.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "shipments")
@@ -14,14 +14,18 @@ public class Shipment {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "shipping_methods", length = 50, nullable = false)
-    private String shippingMethod;
+    @Column(name = "informacion_adicional", columnDefinition = "TEXT")
+    private String informacionAdicional;
 
-    @Column(name = "shipping_date", columnDefinition = "DATE", nullable = false)
-    private String shippingDate;
+    @Column(name = "shipping_date", nullable = true)
+    private LocalDate shippingDate;
 
     @Column(name = "shipping_status", columnDefinition = "boolean", nullable = false)
-    private boolean shippingStatus;
+    private Boolean shippingStatus;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_shipping_type",  nullable = false)
+    private ShippingType shippingType;
 
 
 }
