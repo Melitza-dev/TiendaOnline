@@ -14,8 +14,8 @@ public class Shipment {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "informacion_adicional", columnDefinition = "TEXT")
-    private String informacionAdicional;
+    @Column(name = "aditional_information", columnDefinition = "TEXT")
+    private String aditionalInformation;
 
     @Column(name = "shipping_date", nullable = true)
     private LocalDate shippingDate;

@@ -35,7 +35,7 @@ public class Order {
     private ShippingType shippingType;*/
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "shipping", nullable = false)
+    @JoinColumn(name = "id_shipping", nullable = false)
     private Shipment shipment;
 
    /* @ManyToMany(mappedBy = "products",cascade = CascadeType.ALL, fetch = FetchType.EAGER)*/
