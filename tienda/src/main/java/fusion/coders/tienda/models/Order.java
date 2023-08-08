@@ -1,7 +1,6 @@
 package fusion.coders.tienda.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -41,7 +40,7 @@ public class Order {
    /* @ManyToMany(mappedBy = "products",cascade = CascadeType.ALL, fetch = FetchType.EAGER)*/
    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "orders_products",
-      joinColumns = @JoinColumn(name = "id_product"),
-      inverseJoinColumns = @JoinColumn(name = "id_order"))
+      joinColumns = @JoinColumn(name = "id_order"),
+      inverseJoinColumns = @JoinColumn(name = "id_product"))
     private List<Product> products = new ArrayList<>();
 }

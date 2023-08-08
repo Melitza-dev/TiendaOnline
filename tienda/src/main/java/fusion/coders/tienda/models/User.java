@@ -3,8 +3,6 @@ package fusion.coders.tienda.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
-
 @Entity
 @Table(name = "users")
 @Data
@@ -25,6 +23,6 @@ public class User {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_country")
-    private Country countryList;
+    private Country country;
 
 }

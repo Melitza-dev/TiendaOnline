@@ -1,8 +1,6 @@
 package fusion.coders.tienda.controllers;
 
-import fusion.coders.tienda.models.Shipment;
 import fusion.coders.tienda.models.User;
-import fusion.coders.tienda.services.IShipmentService;
 import fusion.coders.tienda.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,7 +39,6 @@ public class UserController {
     //Agregar pais (/api/tienda_online/usuario) POST
     @PostMapping
     public ResponseEntity<?> agregar(@RequestBody User user) {
-
         return ResponseEntity
           .status(HttpStatus.CREATED)
           .body(userService.agregar(user));

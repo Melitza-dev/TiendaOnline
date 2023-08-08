@@ -1,6 +1,8 @@
 package fusion.coders.tienda.services;
 
+import fusion.coders.tienda.models.Country;
 import fusion.coders.tienda.models.User;
+import fusion.coders.tienda.repositories.CountryRepository;
 import fusion.coders.tienda.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ import java.util.Optional;
 public class UserServiceImpl implements IUserService{
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CountryRepository countryRepository;
 
     @Override
     @Transactional(readOnly = true)
@@ -29,7 +34,14 @@ public class UserServiceImpl implements IUserService{
     @Override
     @Transactional
     public User agregar(User user) {
-        return userRepository.save(user);
+        Country country = countryRepository.findById(user.getCountry().getId()).orElseThrow();
+
+        if(country != null){
+            user.setCountry(country);
+            return userRepository.save(user);
+        }
+        return  null;
+
     }
 
     @Override
@@ -41,7 +53,7 @@ public class UserServiceImpl implements IUserService{
             User userBd = userOptional.orElseThrow();
             userBd.setName(user.getName());
             userBd.setEmail(user.getEmail());
-            userBd.setCountryList(user.getCountryList());
+            userBd.setCountry(user.getCountry());
             userBd.setPassword(user.getPassword());
             return Optional.of(agregar(userBd));
         }

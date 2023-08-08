@@ -42,7 +42,6 @@ public class ShipmentServiceImpl implements IShipmentService{
     public Shipment agregar(Shipment shipment) {
         ShippingType shippingType = shippingTypeRepository.findById(shipment.getShippingType().getId()).orElseThrow();
         shipment.setShippingType(shippingType);
-        System.out.println("descripcion:" + shipment.getInformacionAdicional());
         return shipmentRepository.save(shipment);
     }
 
