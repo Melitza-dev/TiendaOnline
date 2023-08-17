@@ -1,32 +1,8 @@
 package fusion.coders.tienda.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 import fusion.coders.tienda.models.Country;
-import fusion.coders.tienda.services.CountryInterface;
 
-import java.util.List;
-
-public class CountryRepository implements CountryInterface {
-    @Override
-    public void agregar(Country propiedad) {
-
-    }
-
-    @Override
-    public void modificar(Country propiedad) {
-
-    }
-
-    @Override
-    public void eliminar(Long id) {
-
-    }
-
-    @Override
-    public Country get(Long id) {
-        return null;
-    }
-
-    @Override
-    public List<Country> getAll() {
-        return null;
-    }
+public interface CountryRepository extends JpaRepository<Country, Long> {
+    // Puedes definir métodos de consulta personalizados si es necesario
 }

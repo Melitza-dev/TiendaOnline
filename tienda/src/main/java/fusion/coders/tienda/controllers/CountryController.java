@@ -1,49 +1,45 @@
 package fusion.coders.tienda.controllers;
-import fusion.coders.tienda.models.Country;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import fusion.coders.tienda.models.Country;
+import fusion.coders.tienda.services.CountryService;
+
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/countries")
 public class CountryController {
-    @PostMapping("/api/country")
-    public void agregar(@RequestBody Country country) {
-        // funcionalidad para agregar a la bases de datos
+
+    private final CountryService countryService;
+
+    @Autowired
+    public CountryController(CountryService countryService) {
+        this.countryService = countryService;
     }
 
-    @PutMapping("/api/country/{id}")
-    public void modificar(@RequestBody Country country, @PathVariable("id") Long id) {
-        // funcionalidad para modificar a la bases de datos
+    @GetMapping("/{id}")
+    public Country getCountry(@PathVariable Long id) {
+        return countryService.getCountryById(id);
     }
 
-    @DeleteMapping("/api/country/{id}")
-    public void eliminar(@PathVariable("id") Long id) {
-        // funcionalidad para eliminar a la bases de datos
+    @PostMapping
+    public Country createCountry(@RequestBody Country country) {
+        return countryService.createCountry(country);
     }
 
-    @GetMapping("/api/country/{id}")
-    public Country get(@PathVariable("id") Long id) {
-        Country country = new Country();
-        country.setId(1L);
-        country.setNombre("Madrid");
-        return country;
+    @PutMapping("/{id}")
+    public Country updateCountry(@PathVariable Long id, @RequestBody Country country) {
+        return countryService.updateCountry(id, country);
     }
 
-    @GetMapping("/api/country")
-    public List<Country> getAll() {
-        List<Country> lista = new ArrayList<>();
-        Country country = new Country();
-        country.setId(1L);
-        country.setNombre("Madrid");
-
-
-        Country country2 = new Country();
-        country2.setId(1L);
-        country2.setNombre("Valencia");
-        lista.add(country);
-        lista.add(country2);
-        return lista;
+    @DeleteMapping("/{id}")
+    public void deleteCountry(@PathVariable Long id) {
+        countryService.deleteCountry(id);
     }
 
+    @GetMapping
+    public List<Country> getAllCountries() {
+        return countryService.getAllCountries();
+    }
 }
