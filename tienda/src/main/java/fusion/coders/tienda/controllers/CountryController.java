@@ -10,13 +10,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/countries")
 public class CountryController {
-
-    private final CountryService countryService;
-
     @Autowired
-    public CountryController(CountryService countryService) {
-        this.countryService = countryService;
-    }
+    private CountryService countryService;
 
     @GetMapping("/{id}")
     public Country getCountry(@PathVariable Long id) {
